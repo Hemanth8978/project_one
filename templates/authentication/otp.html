@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}identification{% endblock %}
+{% block nav %}
+   
+{% endblock %}
+{% load static %}
+{% block body %}
+
+<!-- {% if user %}
+    <h3>The OTP was send to your register email {{user.email}}</h3>
+    <a href="{% url 'otp' user.username %}"><button>click here to reset password</button></a>
+{% else %}
+    <h3>user not found</h3>
+{% endif %} -->
+
+<style>
+    body{
+        background-image: url("{% static 'img/bg.jfif' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    div{
+        padding:2rem;
+        border-radius: 2rem;
+        background-color: white;
+        width:40vw;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5rem;
+        /* border:1px solid black; */
+        box-shadow: 0 0 1rem;
+    }
+    
+</style>
+<div>
+    <h4>The OTP was send to your register email {{user.email}}</h4><br>
+    <a href="{% url 'otp' user.username %}"><button class="btn btn-primary">click here to reset password</button></a>
+{% endblock %}
+</div>

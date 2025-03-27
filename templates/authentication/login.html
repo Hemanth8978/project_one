@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}login{% endblock %}
+{% block nav %}
+   
+{% endblock %}
+{% block body %}
+<style>
+    #form{
+        margin-top: 10vh;
+    }
+    label{
+        margin-top: 2rem;
+    }
+    body{
+        background-image: url("{% static 'img/bg.jfif' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #google{
+        margin-left: 2rem;
+    }
+
+</style>
+
+<div  id='form' class="container d-flex justify-content-center" style="width:40vw">
+    
+    <form action="" method="post" class="w-40 mx-0 shadow-lg p-3 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width:200vw;">
+        <h2 class="text-center p-3 mb-2 bg-secondary text-white">Login with</h2>
+        <a id='google' class="text-center" href="{% provider_login_url 'google' %}"><img style="width:5rem; height:2.5rem" src="{% static 'img/google.png'%}" alt=""></a>
+        {% csrf_token %}
+        {{form|crispy}} <br>
+        <input type="submit" value="login" class="btn btn-primary w-100" ><br><br>
+        <a href="{% url 'identifyuser' %}" class="btn btn-secondary w-100">forgot password ?</a>
+    </form>
+</div>
+{% endblock %}

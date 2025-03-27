@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Register{% endblock %}
+{% block nav %}
+   
+{% endblock %}
+{% block body %}
+<style>
+    #hint_id_username,#hint_id_password1{
+        display:none;
+    }
+    #form{
+        margin-top: 10vh;
+        
+    }
+    label{
+        margin-top: 0.5rem;
+    }
+    body{
+        background-image: url("{% static 'img/bg.jfif' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+</style>
+
+<div id="form" class="container d-flex justify-content-center mt-20 " >
+    
+    <form action="" method="post" class="w-40 mx-0 shadow-lg p-3 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width:40vw;">
+        <h2 class="text-center p-3 mb-2 bg-secondary text-white">Register Form</h2>
+        {% csrf_token %}
+        {{form.first_name|as_crispy_field}} 
+        {{form.last_name|as_crispy_field}} 
+        {{form.username|as_crispy_field}} 
+        {{form.email|as_crispy_field}} 
+        {{form.date_of_birth|as_crispy_field}} 
+        {{form.phone|as_crispy_field}} 
+        {{form.password1|as_crispy_field}} 
+        {{form.password2|as_crispy_field}} 
+
+        
+        
+        <br>
+        <input type="submit" value="submit" class="btn btn-primary w-100" >
+        <a href="{% url 'login' %}">login</a><br>
+        <h3 class="text-center">Register with</h3>
+        <a class="text-center" href="{% provider_login_url 'google' %}" ><img  style="width:5rem; height:2.5rem" src="{% static 'img/google.png'%}" alt=""></a>
+    </form>
+    
+</div>
+{% endblock %}

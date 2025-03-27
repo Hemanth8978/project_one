@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} ecommerce | home {% endblock %}
+{% block body %}
+
+<style>
+    
+    .container{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        grid-template-rows: auto;
+        gap:1rem;
+    }
+    .items{
+        border:1px solid black;
+        border-radius: 1rem;
+        padding:3rem;
+    }
+    .ccontainer{
+        display:flex;
+        flex-wrap: nowrap;
+        /* grid-template-columns:repeat(4,1fr);
+        grid-template-rows: auto; */
+        gap:2rem;
+        align-items: center ;
+        justify-content: center;
+    }
+    .citems{
+        /* border:1px solid black; */
+        /* border-radius: 1rem; */
+        padding:0.2rem;
+        width: 100px;
+    }
+
+
+</style>
+<div class="ccontainer">
+    {% for category in categories %}
+        <div class="citems">
+            <img src="{{category.category_image.url}}" alt="image1" style="width: 4vw;height: auto;">
+            <p>{{category.name}}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+<div class="container">
+  
+    {% for product in products %}
+    <div class="items">
+    <img src="{{product.image1.url}}" alt="image1" style="width: 15vw;height: auto;">
+    <h5>{{product.product}}</h5>
+    <p>price : {{product.sale_price}} <strike>{{product.original_price}}</strike> {{product.discount_per}}% off</p>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
