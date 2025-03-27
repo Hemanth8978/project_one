@@ -22,3 +22,6 @@ class Addtocartview(View):
         total=Orderitem.quantity * Orderitem.price
         Orders.objects.create(Order_item=orderitem,total=total,status='no placed',user_id=user)
         return HttpResponse('prduct added to cart successfully')
+    
+def sample():
+    pass
